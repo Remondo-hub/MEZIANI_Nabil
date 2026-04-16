@@ -612,7 +612,7 @@
         // Téléchargement PDF via fetch
         document.getElementById('downloadPDFBtn').addEventListener('click', async function() {
             const currentLang = body.getAttribute('data-cv-lang');
-            const pdfFileName = currentLang === 'fr' ? 'PDF_CV.pdf' : 'PDF_CV_EN.pdf';
+            const pdfFileName = currentLang === 'fr' ? 'Nabil MEZIANI_CV-Fr.pdf' : 'Nabil MEZIANI_CV-En.pdf';
             
             try {
                 const response = await fetch(pdfFileName);
