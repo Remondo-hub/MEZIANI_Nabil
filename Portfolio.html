@@ -72,8 +72,11 @@
         .cv-download-btn { display: flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, var(--accent), var(--accent2)); color: white; border: none; padding: 0.42rem 1.1rem; border-radius: 30px; font-weight: 700; font-size: 0.84rem; cursor: pointer; transition: all 0.25s; box-shadow: 0 4px 14px var(--accent-glow); }
         .cv-download-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 22px var(--accent-glow); }
         .cv-language-selector { position: absolute; top: calc(100% + 8px); right: 0; background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 14px; padding: 0.5rem; box-shadow: var(--shadow-hover); display: none; min-width: 220px; z-index: 1001; }
-        .cv-language-selector.show { display: block; }
-        .cv-lang-option { display: flex; align-items: center; gap: 0.8rem; padding: 0.65rem 1rem; color: var(--text-primary); text-decoration: none; border-radius: 10px; transition: background 0.2s; }
+        /* Version hero: à droite du bouton */
+        .hero-cv-wrapper { position: relative; display: inline-block; }
+        .hero-cv-selector { position: absolute; top: calc(100% + 8px); right: 0; background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 14px; padding: 0.5rem; box-shadow: var(--shadow-hover); display: none; min-width: 220px; z-index: 1001; }
+        .cv-language-selector.show, .hero-cv-selector.show { display: block; }
+        .cv-lang-option { display: flex; align-items: center; gap: 0.8rem; padding: 0.65rem 1rem; color: var(--text-primary); text-decoration: none; border-radius: 10px; transition: background 0.2s; cursor: pointer; }
         .cv-lang-option:hover { background: var(--accent-light); color: var(--accent); }
         .theme-toggle { width: 42px; height: 24px; border-radius: 30px; background: var(--accent-light); border: 1.5px solid var(--border-light); cursor: pointer; position: relative; transition: all 0.25s; padding: 0; flex-shrink: 0; }
         .theme-toggle::after { content: ''; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; border-radius: 50%; background: var(--accent); transition: transform 0.28s cubic-bezier(.34,1.56,.64,1); }
@@ -86,7 +89,7 @@
         .mobile-nav-link { display: flex; align-items: center; gap: 0.8rem; padding: 0.8rem 1rem; color: var(--text-primary); text-decoration: none; border-radius: 10px; transition: background 0.2s; }
         .mobile-nav-link:hover { background: var(--accent-light); color: var(--accent); }
         .mobile-cv-options { display: flex; gap: 0.5rem; padding: 0.5rem 1rem; }
-        .mobile-cv-btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.7rem; background: var(--accent); color: white; border: none; border-radius: 30px; font-weight: 700; text-decoration: none; font-size: 0.85rem; }
+        .mobile-cv-btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.7rem; background: var(--accent); color: white; border: none; border-radius: 30px; font-weight: 700; text-decoration: none; font-size: 0.85rem; cursor: pointer; }
         @media (max-width: 1100px) { .main-nav { display: none; } .mobile-menu-btn { display: block; } .header-container { padding: 0.4rem 1rem; } .logo { font-size: 1.2rem; } .cv-download-btn span { display: none; } .cv-download-btn { padding: 0.4rem 0.8rem; } .lang-switch-btn span:last-child { display: none; } .lang-switch-btn { padding: 0.38rem 0.7rem; } }
 
         /* ═══════ SECTIONS ═══════ */
@@ -324,8 +327,8 @@
                 <div class="cv-download-wrapper">
                     <button class="cv-download-btn" id="cvDownloadBtn"><i class="fas fa-download"></i><span class="lang-fr">CV</span><span class="lang-en">CV</span></button>
                     <div class="cv-language-selector" id="cvLangSelector">
-                        <a class="cv-lang-option" href="MEZIANI_NABIL_CV_Fr.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf"></i><span>Version Française</span></a>
-                        <a class="cv-lang-option" href="MEZIANI_NABIL_CV_En.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf"></i><span>English Version</span></a>
+                        <a class="cv-lang-option" data-cv-fr><i class="fas fa-file-pdf"></i><span>Version Française</span></a>
+                        <a class="cv-lang-option" data-cv-en><i class="fas fa-file-pdf"></i><span>English Version</span></a>
                     </div>
                 </div>
                 <button class="theme-toggle" id="themeToggle" aria-label="Changer le thème"></button>
@@ -339,8 +342,8 @@
             <div class="mobile-nav-section"><div class="mobile-nav-title"><span class="lang-fr">Compétences</span><span class="lang-en">Skills</span></div><a class="mobile-nav-link" href="#competences"><i class="fas fa-microchip"></i> <span class="lang-fr">Techniques</span><span class="lang-en">Technical</span></a><a class="mobile-nav-link" href="#soft-skills"><i class="fas fa-user-check"></i> <span class="lang-fr">Personnelles</span><span class="lang-en">Personal</span></a><a class="mobile-nav-link" href="#centres-interet"><i class="fas fa-heart"></i> <span class="lang-fr">Centres d'intérêt</span><span class="lang-en">Interests</span></a></div>
             <div class="mobile-nav-section"><a class="mobile-nav-link" href="#contact"><i class="fas fa-envelope"></i> <span class="lang-fr">Contact</span><span class="lang-en">Contact</span></a></div>
             <div class="mobile-cv-options">
-                <a class="mobile-cv-btn" href="MEZIANI_NABIL_CV_Fr.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf"></i> CV Français</a>
-                <a class="mobile-cv-btn" href="MEZIANI_NABIL_CV_En.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf"></i> CV English</a>
+                <a class="mobile-cv-btn" data-cv-fr-mobile><i class="fas fa-file-pdf"></i> CV Français</a>
+                <a class="mobile-cv-btn" data-cv-en-mobile><i class="fas fa-file-pdf"></i> CV English</a>
             </div>
         </div>
     </header>
@@ -355,11 +358,11 @@
                     <div class="title">Automatisation | DCS | PLC | SCADA | Commissioning</div>
                     <p class="hero-desc"><span class="lang-fr">Ingénieur passionné par la mise en œuvre pratique des solutions d'automatisation, l'amélioration continue et les technologies industrielles modernes. Expérience terrain en construction, commissioning et exploitation.</span><span class="lang-en">Passionate engineer specialized in automation solutions, commissioning, and industrial process optimization with field experience.</span></p>
                     <div class="hero-download-section">
-                        <div class="cv-download-wrapper">
+                        <div class="hero-cv-wrapper">
                             <button class="btn-download" id="heroDownloadBtn"><i class="fas fa-download"></i><span class="lang-fr">Télécharger mon CV</span><span class="lang-en">Download my CV</span></button>
-                            <div class="cv-language-selector" id="heroCvLangSelector" style="left: 0; right: auto;">
-                                <a class="cv-lang-option" href="MEZIANI_NABIL_CV_Fr.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf"></i> Version Française</a>
-                                <a class="cv-lang-option" href="MEZIANI_NABIL_CV_En.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf"></i> English Version</a>
+                            <div class="hero-cv-selector" id="heroCvLangSelector">
+                                <a class="cv-lang-option" data-cv-fr-hero><i class="fas fa-file-pdf"></i> Version Française</a>
+                                <a class="cv-lang-option" data-cv-en-hero><i class="fas fa-file-pdf"></i> English Version</a>
                             </div>
                         </div>
                     </div>
@@ -540,10 +543,100 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Script identique - inchangé
         (function() {
             'use strict';
             AOS.init({ duration: 700, once: true, offset: 80 });
+            
+            // Fonction de téléchargement direct
+            function downloadPDF(url) {
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = url.split('/').pop();
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+
+            // Configuration des téléchargements directs
+            const cvFiles = {
+                fr: 'MEZIANI_NABIL_CV_Fr.pdf',
+                en: 'MEZIANI_NABIL_CV_En.pdf'
+            };
+
+            // Header CV button selector
+            const cvLangSelector = document.getElementById('cvLangSelector');
+            const cvDownloadBtn = document.getElementById('cvDownloadBtn');
+            
+            if (cvDownloadBtn) {
+                cvDownloadBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    cvLangSelector.classList.toggle('show');
+                });
+            }
+
+            // Hero CV button selector
+            const heroCvLangSelector = document.getElementById('heroCvLangSelector');
+            const heroDownloadBtn = document.getElementById('heroDownloadBtn');
+            
+            if (heroDownloadBtn) {
+                heroDownloadBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    heroCvLangSelector.classList.toggle('show');
+                });
+            }
+
+            // Sélecteurs de langue CV header
+            document.querySelectorAll('[data-cv-fr]').forEach(el => {
+                el.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    downloadPDF(cvFiles.fr);
+                    cvLangSelector.classList.remove('show');
+                });
+            });
+            document.querySelectorAll('[data-cv-en]').forEach(el => {
+                el.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    downloadPDF(cvFiles.en);
+                    cvLangSelector.classList.remove('show');
+                });
+            });
+
+            // Sélecteurs de langue CV hero
+            document.querySelectorAll('[data-cv-fr-hero]').forEach(el => {
+                el.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    downloadPDF(cvFiles.fr);
+                    heroCvLangSelector.classList.remove('show');
+                });
+            });
+            document.querySelectorAll('[data-cv-en-hero]').forEach(el => {
+                el.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    downloadPDF(cvFiles.en);
+                    heroCvLangSelector.classList.remove('show');
+                });
+            });
+
+            // Mobile CV buttons
+            document.querySelectorAll('[data-cv-fr-mobile]').forEach(el => {
+                el.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    downloadPDF(cvFiles.fr);
+                });
+            });
+            document.querySelectorAll('[data-cv-en-mobile]').forEach(el => {
+                el.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    downloadPDF(cvFiles.en);
+                });
+            });
+
+            // Fermer les sélecteurs en cliquant ailleurs
+            document.addEventListener('click', () => {
+                if (cvLangSelector) cvLangSelector.classList.remove('show');
+                if (heroCvLangSelector) heroCvLangSelector.classList.remove('show');
+            });
+
             const activitiesData = [
                 { id: 1, imgUrl: "https://github.com/Remondo-hub/Portfolio/blob/main/PARAM%C3%89TRAGE%20INSTRUMENTATION_01.png?raw=true", icon: "fas fa-microchip", title_fr: "PARAMÉTRAGE INSTRUMENTATION", title_en: "INSTRUMENTATION CONFIGURATION", short_fr: "Paramétrage des instruments de mesure industriels", short_en: "Industrial measurement instruments configuration", desc_fr: "Paramétrage Instrumentation HART. Configuration du transmetteur APC-2000-ALW via communicateur Emerson : configuration HART des valeurs LRV et URV, calculées à partir de la formule P= ρ × g × h", desc_en: "HART instrumentation configuration. APC-2000-ALW transmitter configuration via Emerson communicator: HART configuration of LRV and URV values, calculated using the formula P = ρ × g × h", details_fr: "🔧 HART · Communicateur Emerson · LRV/URV · P = ρ × g × h", details_en: "🔧 HART · Emerson communicator · LRV/URV · P = ρ × g × h", tech: "HART, Emerson Communicateur, APC-2000-ALW, Instrumentation" },
                 { id: 2, imgUrl: "https://github.com/Remondo-hub/Portfolio/blob/main/CALIBRATION_01.png?raw=true", icon: "fas fa-chart-line", title_fr: "CALIBRATION", title_en: "CALIBRATION", short_fr: "Calibration d'un transmetteur micro-ondes inline", short_en: "Inline microwave transmitter calibration", desc_fr: "Calibration du transmetteur proMtec réalisée avec succès : les nouvelles valeurs présentent une excellente corrélation avec les résultats de laboratoire sur la mesure Brix inline.", desc_en: "Successful calibration of the proMtec transmitter: new values show excellent correlation with laboratory results for inline Brix measurement.", details_fr: "📊 Brix · Calibration · Transmetteur · Instrumentation", details_en: "📊 Brix · Calibration · Transmitter · Instrumentation", tech: "proMtec, Mesure Brix inline, Instrumentation, Calibration" },
@@ -575,9 +668,8 @@
             function openModal(index) { const a = activitiesData[index]; if (!a || !modal) return; const isFr = currentLang === 'fr'; document.getElementById('modalIcon').innerHTML = `<i class="${a.icon}"></i>`; document.getElementById('modalTitle').textContent = isFr ? a.title_fr : a.title_en; document.getElementById('modalDesc').textContent = isFr ? a.desc_fr : a.desc_en; document.getElementById('modalDetails').innerHTML = `<i class="fas fa-info-circle"></i> ${isFr ? a.details_fr : a.details_en}`; document.getElementById('modalTech').innerHTML = `<strong>${isFr ? 'Technologies :' : 'Technologies:'}</strong> ${a.tech}`; document.getElementById('skillsListModal').innerHTML = ''; modal.classList.add('show'); body.style.overflow = 'hidden'; stopAutoPlay(); }
             function closeModal() { modal?.classList.remove('show'); body.style.overflow = ''; startAutoPlay(); }
             function closeCertModal() { certModal?.classList.remove('show'); body.style.overflow = ''; }
-            function initCvSelectors() { const cvBtn = document.getElementById('cvDownloadBtn'); const heroBtn = document.getElementById('heroDownloadBtn'); const cvSelector = document.getElementById('cvLangSelector'); const heroSelector = document.getElementById('heroCvLangSelector'); const toggle = (s) => { document.querySelectorAll('.cv-language-selector').forEach(sel => { if (sel !== s) sel.classList.remove('show'); }); s?.classList.toggle('show'); }; cvBtn?.addEventListener('click', (e) => { e.stopPropagation(); toggle(cvSelector); }); heroBtn?.addEventListener('click', (e) => { e.stopPropagation(); toggle(heroSelector); }); document.addEventListener('click', () => document.querySelectorAll('.cv-language-selector').forEach(s => s.classList.remove('show'))); }
-            function initMobileMenu() { const btn = document.getElementById('mobileMenuBtn'); const nav = document.getElementById('mobileNav'); btn?.addEventListener('click', () => { nav?.classList.toggle('active'); btn.innerHTML = nav?.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>'; }); document.querySelectorAll('.mobile-nav-link, .mobile-cv-btn').forEach(l => l.addEventListener('click', () => { nav?.classList.remove('active'); btn.innerHTML = '<i class="fas fa-bars"></i>'; })); }
             function initEvents() { document.getElementById('prevBtn')?.addEventListener('click', () => { prevSlide(); resetAutoPlay(); }); document.getElementById('nextBtn')?.addEventListener('click', () => { nextSlide(); resetAutoPlay(); }); document.querySelector('.carousel-wrapper')?.addEventListener('mouseenter', stopAutoPlay); document.querySelector('.carousel-wrapper')?.addEventListener('mouseleave', startAutoPlay); document.querySelector('.modal-close')?.addEventListener('click', closeModal); document.querySelector('.cert-modal-close')?.addEventListener('click', closeCertModal); window.addEventListener('click', (e) => { if (e.target === modal) closeModal(); if (e.target === certModal) closeCertModal(); }); document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeModal(); closeCertModal(); } }); document.getElementById('homeLogo')?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' })); document.getElementById('themeToggle')?.addEventListener('click', () => { body.classList.toggle('dark'); localStorage.setItem('theme', body.classList.contains('dark') ? 'dark' : 'light'); }); document.getElementById('langSwitchBtn')?.addEventListener('click', () => { currentLang = currentLang === 'fr' ? 'en' : 'fr'; body.setAttribute('data-lang', currentLang); localStorage.setItem('lang', currentLang); updateLangButton(); buildSlides(); }); document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', function(e) { e.preventDefault(); const t = document.querySelector(this.getAttribute('href')); if (t) { t.scrollIntoView({ behavior: 'smooth' }); document.getElementById('mobileNav')?.classList.remove('active'); } })); }
+            function initMobileMenu() { const btn = document.getElementById('mobileMenuBtn'); const nav = document.getElementById('mobileNav'); btn?.addEventListener('click', () => { nav?.classList.toggle('active'); btn.innerHTML = nav?.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>'; }); document.querySelectorAll('.mobile-nav-link, .mobile-cv-btn').forEach(l => l.addEventListener('click', () => { nav?.classList.remove('active'); btn.innerHTML = '<i class="fas fa-bars"></i>'; })); }
             new IntersectionObserver((e) => { e.forEach(entry => { if (entry.isIntersecting) entry.target.querySelectorAll('.lang-progress-fill').forEach(b => { const w = b.getAttribute('data-width'); if (w) b.style.width = w + '%'; }); }); }, { threshold: 0.3 }).observe(document.querySelector('.languages-wrapper'));
             const skillCardsData = { management: { icon: 'fas fa-users-cog', title_fr: 'Management & Coordination', title_en: 'Management & Coordination', desc_fr: 'Gestion d\'équipe, gestion des sous-traitants, travail en équipe, communication efficace.', desc_en: 'Team management, subcontractor management, teamwork, effective communication.' }, automation: { icon: 'fas fa-microchip', title_fr: 'Automatisation & Contrôle', title_en: 'Automation & Control', desc_fr: 'Programmation de PLC, Systèmes SCADA, Systèmes DCS, Protocoles de communication.', desc_en: 'PLC programming, SCADA systems, DCS systems, Communication protocols.' }, instrumentation: { icon: 'fas fa-chart-line', title_fr: 'Instrumentation & Mesure', title_en: 'Instrumentation & Measurement', desc_fr: 'Maîtrise des capteurs, Étalonnage des instruments, Calibration des instruments.', desc_en: 'Sensor mastery, Instrument calibration.' }, maintenance: { icon: 'fas fa-tools', title_fr: 'Maintenance & Mise en service', title_en: 'Maintenance & Commissioning', desc_fr: 'Maintenance industrielle, Mise en service d\'équipements.', desc_en: 'Industrial maintenance, Equipment commissioning.' }, documentation: { icon: 'fas fa-file-alt', title_fr: 'Documentation & Outils', title_en: 'Documentation & Tools', desc_fr: 'Documentation technique, Microsoft Office.', desc_en: 'Technical documentation, Microsoft Office.' }, problemsolving: { icon: 'fas fa-search', title_fr: 'Résolution de problèmes', title_en: 'Problem Solving', desc_fr: 'Analyse technique, Diagnostic des pannes, Résolution de problèmes.', desc_en: 'Technical analysis, Fault diagnosis, Problem resolution.' } };
             document.querySelectorAll('.skill-card-item').forEach(card => { card.addEventListener('click', () => { let key = card.getAttribute('data-skill'); let s = skillCardsData[key]; if(s) { let isFr = document.body.getAttribute('data-lang') === 'fr'; document.getElementById('modalIcon').innerHTML = `<i class="${s.icon}"></i>`; document.getElementById('modalTitle').innerText = isFr ? s.title_fr : s.title_en; document.getElementById('modalDesc').innerText = isFr ? s.desc_fr : s.desc_en; document.getElementById('modalDetails').innerHTML = ''; document.getElementById('modalTech').innerHTML = ''; document.getElementById('skillsListModal').innerHTML = ''; document.getElementById('activityModal').classList.add('show'); document.body.style.overflow = 'hidden'; } }); });
@@ -585,7 +677,7 @@
             document.querySelectorAll('.cert-card').forEach(c => c.addEventListener('click', function() { const cert = certDetails[this.dataset.cert]; if (cert) { document.getElementById('certModalIcon').innerHTML = cert.icon; document.getElementById('certModalTitle').textContent = cert.title; document.getElementById('certModalIssuer').innerHTML = `<i class="fas fa-building"></i> ${cert.issuer}`; document.getElementById('certModalDate').innerHTML = `<i class="far fa-calendar-alt"></i> ${cert.date}`; document.getElementById('certModalDesc').textContent = currentLang === 'fr' ? cert.desc : cert.desc_en; document.getElementById('certModalSkills').innerHTML = cert.skills.map(s => `<span>${s}</span>`).join(''); certModal.classList.add('show'); } }));
             const trainingDetails = { pcs7: { icon: 'fas fa-microchip', title_fr: 'SIMATIC PCS7 Expert', title_en: 'SIMATIC PCS7 Expert', desc_fr: 'Formation approfondie sur le système DCS Siemens SIMATIC PCS7. Cette certification avancée couvre la création de projets CFC/SFC, la conception d\'OS graphiques, la mise en place de redondance serveur/client et la configuration avancée des systèmes distribués.', desc_en: 'Advanced training on Siemens SIMATIC PCS7 DCS system. This certification covers CFC/SFC project creation, graphic OS design, server/client redundancy setup, and advanced distributed system configuration.', details_fr: '📅 Novembre 2025 | 🏢 TECHNORD (Belgique) | ✅ Certifié', details_en: '📅 November 2025 | 🏢 TECHNORD (Belgium) | ✅ Certified', tech_fr: 'Gestion de projets PCS7, Programmation CFC/SFC, Configuration PROFIBUS & PROFINET, Développement d\'interfaces OS', tech_en: 'PCS7 Project Management, CFC/SFC Programming, PROFIBUS & PROFINET Configuration, OS Interface Development' }, maintenance: { icon: 'fas fa-wrench', title_fr: 'SIMATIC Maintenance Niveau 1', title_en: 'SIMATIC Maintenance Level 1', desc_fr: 'Formation à la maintenance des systèmes SIMATIC S7. Acquisition des compétences en diagnostic avancé, dépannage des automates S7, compréhension des architectures industrielles et utilisation des outils de monitoring.', desc_en: 'Training on SIMATIC S7 systems maintenance. Skills acquired: advanced diagnostics, S7 PLC troubleshooting, industrial architectures understanding, and monitoring tools usage.', details_fr: '📅 Septembre 2025 | 🏢 CFIC GICA | ✅ Certifié', details_en: '📅 September 2025 | 🏢 CFIC GICA | ✅ Certified', tech_fr: 'Diagnostic d\'automates S7, Dépannage systèmes automatisés, Maintenance préventive et corrective, Lecture d\'architectures industrielles', tech_en: 'S7 PLC Diagnostics, Automated Systems Troubleshooting, Preventive & Corrective Maintenance, Industrial Architecture Reading' }, seminar: { icon: 'fas fa-chart-line', title_fr: 'Séminaire Maintenance industrielle', title_en: 'Industrial Maintenance Seminar', desc_fr: 'Séminaire sur les stratégies modernes de maintenance industrielle. Couvre la gestion de maintenance, les stratégies TPM, la définition d\'indicateurs de performance et la planification des interventions.', desc_en: 'Seminar on modern industrial maintenance strategies. Covers maintenance management, TPM strategies, performance indicators definition, and intervention planning.', details_fr: '📅 Octobre 2023 | 🏢 INPED', details_en: '📅 October 2023 | 🏢 INPED', tech_fr: 'Gestion de maintenance, Stratégie préventive et corrective, Maintenance conditionnelle, Planification d\'interventions', tech_en: 'Maintenance Management, Preventive & Corrective Strategy, Condition-Based Maintenance, Intervention Planning' }, safety: { icon: 'fas fa-shield-alt', title_fr: 'Sécurité industrielle', title_en: 'Industrial Safety', desc_fr: 'Formation aux principes fondamentaux de la sécurité en milieu industriel. Couvre les principes de sécurité, la prévention des risques, la gestion des risques et les premiers secours.', desc_en: 'Training on fundamental principles of industrial safety. Covers safety principles, risk prevention, risk management, and first aid.', details_fr: '📅 Décembre 2020 | 🏢 IFACT', details_en: '📅 December 2020 | 🏢 IFACT', tech_fr: 'Analyse des risques industriels, Gestion des situations critiques, Intervention en zone dangereuse, Premiers secours', tech_en: 'Industrial Risk Analysis, Critical Situation Management, Dangerous Zone Intervention, First Aid' } };
             document.querySelectorAll('.training-content').forEach(card => { card.addEventListener('click', () => { let key = card.getAttribute('data-training'); let t = trainingDetails[key]; if(t) { document.getElementById('modalIcon').innerHTML = `<i class="${t.icon}"></i>`; document.getElementById('modalTitle').innerText = currentLang === 'fr' ? t.title_fr : t.title_en; document.getElementById('modalDesc').innerText = currentLang === 'fr' ? t.desc_fr : t.desc_en; document.getElementById('modalDetails').innerHTML = `<i class="fas fa-info-circle"></i> ${currentLang === 'fr' ? t.details_fr : t.details_en}`; let techText = currentLang === 'fr' ? t.tech_fr : t.tech_en; document.getElementById('modalTech').innerHTML = `<strong>${currentLang === 'fr' ? 'Compétences acquises :' : 'Skills acquired:'}</strong> ${techText}`; document.getElementById('skillsListModal').innerHTML = ''; document.getElementById('activityModal').classList.add('show'); document.body.style.overflow = 'hidden'; } }); });
-            buildSlides(); startAutoPlay(); initCvSelectors(); initMobileMenu(); initEvents(); window.addEventListener('resize', () => updateCarousel());
+            buildSlides(); startAutoPlay(); initMobileMenu(); initEvents(); window.addEventListener('resize', () => updateCarousel());
         })();
     </script>
 
