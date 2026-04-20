@@ -323,7 +323,7 @@
                 </ul>
             </nav>
             <div class="header-actions">
-                <button class="lang-switch-btn" id="langSwitchBtn"><i class="fas fa-globe"></i><span>FR</span></button>
+                <button class="lang-switch-btn" id="langSwitchBtn"><i class="fas fa-globe"></i><span>FR</span><i class="fas fa-chevron-down"></i></button>
                 <div class="cv-download-wrapper">
                     <button class="cv-download-btn" id="cvDownloadBtn"><i class="fas fa-download"></i><span class="lang-fr">CV</span><span class="lang-en">CV</span></button>
                     <div class="cv-language-selector" id="cvLangSelector">
@@ -657,7 +657,7 @@
             const modal = document.getElementById('activityModal'); const certModal = document.getElementById('certModal');
             if (localStorage.getItem('theme') === 'dark') body.classList.add('dark');
             body.setAttribute('data-lang', currentLang); updateLangButton();
-            function updateLangButton() { const btn = document.getElementById('langSwitchBtn'); if (btn) btn.innerHTML = `<i class="fas fa-globe"></i><span>${currentLang === 'fr' ? 'FR' : 'EN'}</span><i class="fas fa-chevron-down"></i>`; }
+            function updateLangButton() { const btn = document.getElementById('langSwitchBtn'); if (btn) btn.innerHTML = `<i class="fas fa-globe"></i><span>${currentLang === 'fr' ? 'FR' : 'EN'}</span>`; }
             function buildSlides() { if (!track || !dotsContainer) return; const isFr = currentLang === 'fr'; track.innerHTML = ''; dotsContainer.innerHTML = ''; activitiesData.forEach((a, i) => { const slide = document.createElement('div'); slide.className = 'carousel-slide'; slide.innerHTML = `<img src="${a.imgUrl}" alt="${isFr ? a.title_fr : a.title_en}"><div class="slide-overlay"><h3>${isFr ? a.title_fr : a.title_en}</h3><div class="desc-row"><span>${isFr ? a.short_fr : a.short_en}</span><span class="click-details-btn"><i class="fas fa-info-circle"></i> ${isFr ? 'Détails' : 'Details'}</span></div></div>`; slide.addEventListener('click', (e) => { if (!e.target.closest('.click-details-btn')) openModal(i); }); track.appendChild(slide); const dot = document.createElement('button'); dot.className = 'dot' + (i === 0 ? ' active' : ''); dot.addEventListener('click', () => { currentIndex = i; updateCarousel(); resetAutoPlay(); }); dotsContainer.appendChild(dot); }); updateCarousel(); }
             function updateCarousel() { if (track) track.style.transform = `translateX(-${currentIndex * 100}%)`; dotsContainer?.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === currentIndex)); }
             function nextSlide() { if (track?.children.length) { currentIndex = (currentIndex + 1) % track.children.length; updateCarousel(); } }
